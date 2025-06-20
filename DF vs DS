@@ -1,0 +1,18 @@
+String[] stringList = new String[] {"Banana", "Car", "Glass", "Banana", "Computer", "Car"};
+
+// Convert array to list of strings
+List<String> data = Arrays.asList(stringList);
+// Convert from list to dataset
+Dataset<String> ds = spark.createDataset(data, Encoders.STRING());
+
+// Note: groupBy followed by count() results in a DataFrame, not a Dataset
+// Dataset<Row> df = ds.groupBy("value").count(); --> ERROR
+
+// Converting between DataFrame and Dataset
+// Convert Dataset to DataFrame
+// df = ds.toDF();
+
+// Convert DataFrame back to Dataset
+// ds = df.as(Encoders.STRING());
+
+// Reminder: For objects, ensure each column has a primitive data type
